@@ -1,88 +1,43 @@
 'use strict';
 
-// import React from 'react';
-console.log('app.js is runniddsng');
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-// JSX - Javascript XML is a syntax extension to JavaScript
-var app = {
-  title: 'Indecision App',
-  subtitle: 'This is subtitle',
-  options: []
-};
-var onFormSubmit = function onFormSubmit(e) {
-  e.preventDefault();
-  var option = e.target.elements.option.value;
-  if (option) {
-    app.options.push(option);
-    e.target.elements.option.value = '';
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var Person = function () {
+  function Person() {
+    var name = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 'Anonymous';
+    var location = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 'unknown';
+    var age = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 0;
+
+    _classCallCheck(this, Person);
+
+    this.name = name;
+    this.location = location;
+    this.age = age;
   }
-  renderForm();
-};
 
-var removeAll = function removeAll() {
-  app.options = [];
-  renderForm();
-};
+  _createClass(Person, [{
+    key: 'getGreeting',
+    value: function getGreeting() {
+      return (
+        // 'Hi, my name is ' + this.name + ' and I am from ' + this.location + '!'
+        'Hi, my name is ' + this.name + ' and I am from ' + this.location
+      );
+    }
+  }, {
+    key: 'getDescription',
+    value: function getDescription() {
+      return this.name + ' is ' + this.age + ' year(s) old.';
+    }
+  }]);
 
-var onMakeDecision = function onMakeDecision() {
-  var randomNum = Math.floor(Math.random() * app.options.length);
-  var option = app.options[randomNum];
-  alert(option);
-};
-var appRoot = document.getElementById('app');
+  return Person;
+}();
 
-var renderForm = function renderForm() {
-  var template = React.createElement(
-    'div',
-    null,
-    React.createElement(
-      'h1',
-      null,
-      app.title
-    ),
-    app.subtitle && React.createElement(
-      'p',
-      null,
-      app.subtitle
-    ),
-    React.createElement(
-      'p',
-      null,
-      app.options.length > 0 ? 'Here are your options:' : 'no options'
-    ),
-    React.createElement(
-      'button',
-      { disabled: app.options.length === 0, onClick: onMakeDecision },
-      'What should I do?'
-    ),
-    React.createElement(
-      'button',
-      { onClick: removeAll },
-      'Remove All'
-    ),
-    React.createElement(
-      'ol',
-      null,
-      app.options.map(function (option) {
-        return React.createElement(
-          'li',
-          { key: option },
-          option
-        );
-      })
-    ),
-    React.createElement(
-      'form',
-      { onSubmit: onFormSubmit },
-      React.createElement('input', { type: 'text', name: 'option' }),
-      React.createElement(
-        'button',
-        null,
-        'Add Option'
-      )
-    )
-  );
-  ReactDOM.render(template, appRoot);
-};
-
-renderForm();
+var me = new Person('Hesam Alavi', 'Tehran', 39);
+console.log(me.getGreeting());
+console.log(me.getDescription());
+var other = new Person();
+console.log(other.getGreeting());
+console.log(other.getDescription());
