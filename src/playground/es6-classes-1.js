@@ -18,6 +18,7 @@ class Student extends Person {
     this.major = major;
   }
   hasMajor() {
+    // to turn this.major into a boolean, in this case looking for a truthy value
     return !!this.major;
   }
   getDescription() {
