@@ -22,7 +22,7 @@ var IndecisionApp = function (_React$Component) {
     _this.handleDeleteOption = _this.handleDeleteOption.bind(_this);
     _this.state = {
       // This allows options to be passed down
-      options: props.options
+      options: []
     };
     return _this;
   }
@@ -30,12 +30,18 @@ var IndecisionApp = function (_React$Component) {
   _createClass(IndecisionApp, [{
     key: 'componentDidMount',
     value: function componentDidMount() {
-      console.log('didmount');
-      var json = localStorage.getItem('options');
-      var options = JSON.parse(json);
-      this.setState(function () {
-        return { options: options };
-      });
+      // to see if the value being parsed has no errors
+      try {
+        var json = localStorage.getItem('options');
+        var options = JSON.parse(json);
+        if (options) {
+          this.setState(function () {
+            return { options: options };
+          });
+        }
+      } catch (e) {
+        //  Do nothing
+      }
     }
     // run a conditional so that only if the data is being updated to save the data
 
@@ -118,10 +124,6 @@ var IndecisionApp = function (_React$Component) {
   return IndecisionApp;
 }(React.Component);
 
-IndecisionApp.defaultProps = {
-  options: []
-};
-
 var Header = function Header(props) {
   return React.createElement(
     'div',
@@ -191,6 +193,11 @@ var Options = function Options(props) {
       { onClick: props.handleDeleteOptions },
       'Remove All'
     ),
+    props.options.length === 0 && React.createElement(
+      'p',
+      null,
+      'Please add an option to get started'
+    ),
     props.options.map(function (option) {
       return React.createElement(Option, {
         key: option,
@@ -259,6 +266,10 @@ var AddOption = function (_React$Component2) {
       this.setState(function () {
         return { error: error };
       });
+
+      if (!error) {
+        e.target.elements.option.value = '';
+      }
     }
   }, {
     key: 'render',
@@ -297,4 +308,4 @@ var AddOption = function (_React$Component2) {
 //   );
 // };
 
-ReactDOM.render(React.createElement(IndecisionApp, { options: ['Give all me money away', 'Go swim with sharks'] }), document.getElementById('app'));
+ReactDOM.render(React.createElement(IndecisionApp, { options: ['Give all me money away', 'Swim with sharks'] }), document.getElementById('app'));
