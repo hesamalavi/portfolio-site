@@ -28,6 +28,21 @@ var IndecisionApp = function (_React$Component) {
   }
 
   _createClass(IndecisionApp, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      console.log('mounted');
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      console.log('updated');
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      console.log('unmounted');
+    }
+  }, {
     key: 'handleDeleteOptions',
     value: function handleDeleteOptions() {
       this.setState(function () {
