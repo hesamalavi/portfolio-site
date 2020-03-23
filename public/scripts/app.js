@@ -28,14 +28,24 @@ var IndecisionApp = function (_React$Component) {
   }
 
   _createClass(IndecisionApp, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      console.log('mounted');
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      console.log('didmount');
+      var json = localStorage.getItem('options');
+      var options = JSON.parse(json);
+      this.setState(function () {
+        return { options: options };
+      });
     }
+    // run a conditional so that only if the data is being updated to save the data
+
   }, {
     key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      console.log('updated');
+    value: function componentDidUpdate(prevProps, prevState) {
+      if (prevState.options.length !== this.state.options.length) {
+        var json = JSON.stringify(this.state.options);
+        localStorage.setItem('options', json);
+      }
     }
   }, {
     key: 'componentWillUnmount',
