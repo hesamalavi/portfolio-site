@@ -3,3 +3,9 @@ import ReactDOM from 'react-dom';
 import IndecisionApp from './components/IndecisionApp.js';
 
 ReactDOM.render(<IndecisionApp />, document.getElementById('app'));
+
+class OldSyntax {
+  constructor() {
+    this.name = 'Mike';
+  }
+}
