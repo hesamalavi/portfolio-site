@@ -4,7 +4,7 @@ import validator from 'validator';
 
 console.log(validator.isEmail('test@test.com'));
 
-const template = React.createElement('p', {}, 'test');
+const template = <p>this is jsx</p>;
 ReactDOM.render(template, document.getElementById('app'));
 
 // // import './utils.js';
