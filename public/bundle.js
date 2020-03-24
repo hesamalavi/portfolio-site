@@ -79,8 +79,9 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 // console.log(square(4));
 // console.log(add(4, 4));
 
-console.log(__WEBPACK_IMPORTED_MODULE_1__person__["b" /* isAdult */](7));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person__["c" /* isAdult */](7));
 console.log(__WEBPACK_IMPORTED_MODULE_1__person__["a" /* canDrink */](7));
+console.log(__WEBPACK_IMPORTED_MODULE_1__person__["b" /* default */](99));
 
 
 /***/ }),
@@ -106,12 +107,15 @@ const add = (a, b) => a + b;
 
 "use strict";
 const isAdult = age => age >= 18;
-/* harmony export (immutable) */ __webpack_exports__["b"] = isAdult;
+/* harmony export (immutable) */ __webpack_exports__["c"] = isAdult;
 
 
 const canDrink = age => age >= 18;
 /* harmony export (immutable) */ __webpack_exports__["a"] = canDrink;
 
+
+const isSenior = a => a > 65;
+/* harmony default export */ __webpack_exports__["b"] = (isSenior);
 
 
 /***/ })
