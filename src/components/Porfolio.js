@@ -5,8 +5,8 @@ import { Link, NavLink } from 'react-router-dom';
 
 const Portfolio = () => (
   <div>
-    <NavLink to="/portfolioOne">Portfolio One</NavLink>
-    <NavLink to="/portfolioTwo">Portfolio Two</NavLink>
+    <Link to="/portfolio/1">Portfolio One</Link>
+    <Link to="/portfolio/2">Portfolio Two</Link>
   </div>
 );
 
